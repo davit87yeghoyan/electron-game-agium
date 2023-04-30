@@ -1,0 +1,45 @@
+{
+  "name": "war-and-peace",
+  "productName": "War and Peace",
+  "version": "1.0.0",
+  "description": "War and Peace browser",
+  "main": "main.js",
+
+  "keywords": [
+    "War and Peace",
+    "Strategy Game"
+  ],
+
+  "author": "Agium <davit87.yeghoyan@gmail.com>",
+  "license": "CC0-1.0",
+
+  "scripts": {
+    "start": "electron .",
+    "dist mac": " electron-builder --x64",
+    "dist win64": "electron-builder --win --x64"
+  },
+  "repository": "https://github.com/electron/electron-quick-start",
+
+
+  "devDependencies": {
+    "electron": "^11.0.5",
+    "electron-builder": "^24.2.1",
+    "electron-packager": "^17.1.1"
+  },
+  "build": {
+    "icon": "king.png",
+
+    "extraResources": [
+      {
+        "from": "./plugins/${os}/${arch}",
+        "to": "plugins",
+        "filter": [
+          "**/*"
+        ]
+      }
+    ]
+  },
+  "dependencies": {
+    "electron-log": "^4.4.8"
+  }
+}
