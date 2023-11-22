@@ -1,9 +1,8 @@
 const {app, BrowserWindow} = require('electron')
 const path = require('path');
-const log = require('electron-log');
 
 // Specify flash path, supposing it is placed in the same directory with main.js.
-let pluginDir = process.resourcesPath + '/plugins';
+let pluginDir = app.getAppPath() + '/plugins/win/'+process.arch;
 let pluginName;
 
 
@@ -21,8 +20,8 @@ switch (process.platform) {
 }
 
 console.log(path.join(pluginDir, pluginName));
-console.log(process.resourcesPath);
 console.log(__dirname + '/icon.ico');
+console.log(app.getAppPath());
 
 app.commandLine.appendSwitch('ppapi-flash-path', path.join(pluginDir, pluginName))
 
@@ -41,6 +40,7 @@ app.on('ready', () => {
     })
     win.loadURL(`https://agium.com/index.php?page=game`);
     //win.webContents.openDevTools();
+    win.removeMenu();
     // Something else
 })
 
