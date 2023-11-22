@@ -4,31 +4,28 @@
   "version": "1.0.0",
   "description": "War and Peace browser",
   "main": "main.js",
-
   "keywords": [
     "War and Peace",
     "Strategy Game"
   ],
-
   "author": "Agium <davit87.yeghoyan@gmail.com>",
   "license": "CC0-1.0",
-
   "scripts": {
     "start": "electron .",
-    "dist mac": " electron-builder --x64",
-    "dist win64": "electron-builder --win --x64"
+    "build:win": "vue-cli-service Electron:build --windows"
   },
   "repository": "https://github.com/electron/electron-quick-start",
-
-
   "devDependencies": {
     "electron": "^11.0.5",
     "electron-builder": "^24.2.1",
-    "electron-packager": "^17.1.1"
+    "electron-packager": "^17.1.1",
+    "vue-cli-plugin-electron-builder": "^2.1.1"
   },
   "build": {
     "icon": "king.png",
-
+    "target": [
+      "appx"
+    ],
     "extraResources": [
       {
         "from": "./plugins/${os}/${arch}",
@@ -37,7 +34,14 @@
           "**/*"
         ]
       }
-    ]
+    ],
+    "appx": {
+      "applicationId": "War and Peace - MMO",
+      "identityName": "32433Agium.535836192F67B",
+      "publisher": "CN=D56F5D3D-559A-4B74-A2A9-C442F3876383",
+      "publisherDisplayName": "Agium",
+      "backgroundColor": "#a0beeb"
+    }
   },
   "dependencies": {
     "electron-log": "^4.4.8"
